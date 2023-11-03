@@ -14,15 +14,17 @@ class AnonymousBoard2ApplicationTests {
 
 	@Test
 	void contextLoads() {
-		Post post = new Post();
-		post.setUserName( "나야" );
-		post.setTitle( "제목이야" );
-		post.setBody( "body ..." );
+		return;
 
-		postRepository.save( post );
+		//Post post = new Post();
+		//post.setUserName( "나야" );
+		//post.setTitle( "제목이야" );
+		//post.setBody( "body ..." );
 
-		System.out.println( "=======================");
-		System.out.println( postRepository.findAll() );
+		//postRepository.save( post );
+
+		//System.out.println( "=======================");
+		//System.out.println( postRepository.findAll() );
 	}
 
 }

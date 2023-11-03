@@ -4,6 +4,7 @@ import com.example.anonymousboard2.dtos.PostResponseDto;
 import com.example.anonymousboard2.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +23,12 @@ public class BoardController {
 
 	@GetMapping( "/board" )
 	public List< PostResponseDto > getPosts() {
-		return postService.getPosts();
+		var ps = postService.getPosts();
+		return ps;
+	}
+
+	@GetMapping( "/board/{id}" )
+	public PostResponseDto getPost( @PathVariable String id ) {
+		return postService.getPost( id );
 	}
 }
