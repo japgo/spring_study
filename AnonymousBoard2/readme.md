@@ -17,3 +17,8 @@
 |게시글 작성|POST|/api/board|title, body|작성 성공 여부|
 |게시글 삭제|DELETE|/api/board/{id}| |삭제 성공 여부|
 |게시글 수정|PATCH|/api/board/{id}|title, body|수정 성공 여부|
+
+
+## ERD
+![img](https://github.com/japgo/spring_study/blob/master/AnonymousBoard2/img/%E1%84%8B%E1%85%B5%E1%86%A8%E1%84%86%E1%85%A7%E1%86%BC%20%E1%84%80%E1%85%A6%E1%84%89%E1%85%B5%E1%84%91%E1%85%A1%E1%86%AB.png)
+***
