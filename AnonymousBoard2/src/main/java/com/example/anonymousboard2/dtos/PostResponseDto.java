@@ -16,7 +16,7 @@ public class PostResponseDto {
 	private String body;
 	private LocalDateTime lastModifiedDate;
 	public PostResponseDto( Post post ) {
-		this.id = post.getId().toString();
+		this.id = post.getId();
 		this.userName = post.getUserName();
 		this.title = post.getTitle();
 		this.body = post.getBody();

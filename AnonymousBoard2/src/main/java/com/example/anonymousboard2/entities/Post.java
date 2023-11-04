@@ -18,10 +18,12 @@ import java.time.LocalDateTime;
 @Setter
 public class Post {
 
+	@Id
 	private String id;
 	private String userName;
 	private String title;
 	private String body;
+	private String password;
 
 	@CreatedDate
 	private LocalDateTime createdDate;
