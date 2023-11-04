@@ -22,5 +22,5 @@
 ## ERD
 * post collection에 아래 내용으로 데이터 관리
 
-![img](https://github.com/japgo/spring_study/blob/master/AnonymousBoard2/img/%E1%84%8B%E1%85%B5%E1%86%A8%E1%84%86%E1%85%A7%E1%86%BC%20%E1%84%80%E1%85%A6%E1%84%89%E1%85%B5%E1%84%91%E1%85%A1%E1%86%AB.png)
+![img](https://github.com/japgo/spring_study/blob/master/AnonymousBoard2/img/%EC%9D%B5%EB%AA%85%20%EA%B2%8C%EC%8B%9C%ED%8C%90.png)
 ***
