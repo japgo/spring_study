@@ -1,15 +1,12 @@
 package com.example.anonymousboard2.entities;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.example.anonymousboard2.dtos.PostRequestDto;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDateTime;
 
@@ -22,7 +19,7 @@ public class Post {
 	private String id;
 	private String userName;
 	private String title;
-	private String body;
+	private String content;
 	private String password;
 
 	@CreatedDate
@@ -34,5 +31,12 @@ public class Post {
 	@Override
 	public String toString() {
 		return "name is " + userName;
+	}
+
+	public Post( PostRequestDto postRequestDto, String password ) {
+		this.userName = postRequestDto.getUserName();
+		this.title = postRequestDto.getTitle();;
+		this.content = postRequestDto.getContent();
+		this.password = password;
 	}
 }
