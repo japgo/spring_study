@@ -1,8 +1,11 @@
 package com.example.anonymousboard2.entities;
 
 import com.example.anonymousboard2.dtos.PostRequestDto;
+import jakarta.persistence.Entity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -10,13 +13,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
-@Document( collection = "post" )
+@Document( collection = "board" )
 @Getter
 @Setter
+@NoArgsConstructor
 public class Post {
 
 	@Id
-	private String id;
+	private ObjectId id;
+
 	private String userName;
 	private String title;
 	private String content;
@@ -33,10 +38,16 @@ public class Post {
 		return "name is " + userName;
 	}
 
-	public Post( PostRequestDto postRequestDto, String password ) {
+	public Post( PostRequestDto postRequestDto ) {
 		this.userName = postRequestDto.getUserName();
-		this.title = postRequestDto.getTitle();;
+		this.title = postRequestDto.getTitle();
 		this.content = postRequestDto.getContent();
-		this.password = password;
+	}
+
+	public Post update( PostRequestDto postRequestDto ) {
+		this.title = postRequestDto.getTitle();
+		this.content = postRequestDto.getContent();
+
+		return this;
 	}
 }

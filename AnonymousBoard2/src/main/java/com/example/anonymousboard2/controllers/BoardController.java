@@ -3,10 +3,8 @@ package com.example.anonymousboard2.controllers;
 import com.example.anonymousboard2.dtos.PostRequestDto;
 import com.example.anonymousboard2.dtos.PostResponseDto;
 import com.example.anonymousboard2.services.PostService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,9 +22,9 @@ public class BoardController {
 	}
 
 	@GetMapping( "/board" )
-	public List< PostResponseDto > getPosts() {
+	public ResponseEntity< List< PostResponseDto > > getPosts() {
 		var ps = postService.getPosts();
-		return ps;
+		return ResponseEntity.ok( ps );
 	}
 
 	@PostMapping( "/board" )
@@ -58,5 +56,18 @@ public class BoardController {
 		return ResponseEntity.status( httpStatus ).body( postResponseDto );
 	}
 
+	@DeleteMapping( "/board/{id}" )
+	public ResponseEntity< String > deletePost( @PathVariable String id, @RequestHeader String password ) {
+		postService.deletePost( id, password );
+
+		return ResponseEntity.ok( "delete success" );
+	}
+
+	@PatchMapping( "/board/{id}" )
+	public ResponseEntity< PostResponseDto > updatePost( @PathVariable String id, PostRequestDto postRequestDto, @RequestHeader String password ) {
+		PostResponseDto postResponseDto = postService.updatePost( id, postRequestDto, password );
+
+		return ResponseEntity.ok( postResponseDto );
+	}
 
 }
