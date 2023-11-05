@@ -9,13 +9,13 @@
 ***
 
 ## API
-|    기능     | Method | URL              | REQUEST                         | RESPONSE                                                                                                       |
-|:---------:|:------:|------------------|---------------------------------|----------------------------------------------------------------------------------------------------------------|
-| 게시판 전체 보기 |  GET   | /api/board       |                                 | 게시글 전체 목록                                                                                                      |
-|  게시글 작성   |  POST  | /api/board       | userName, title, body, password | 작성된 게시글                                                                                                        |
-| 개별 개시글 보기 |  GET   | /api/board/{id}  |                                 | { <br> "userName":string, <br> "title":string, <br> "body":string <br> "lastModifiedDate":LocalDateTime <br> } |
-|  게시글 삭제   | DELETE | /api/board/{id}  |                                 |                                                                                                                |
-|  게시글 수정   | PATCH  | /api/board/{id}  | userName, title, body, password | 수정된 게시글                                                                                                         |
+|    기능     | Method | URL              | REQUEST                                                    | RESPONSE                                                                                                          |
+|:---------:|:------:|------------------|------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| 게시판 전체 보기 |  GET   | /api/board       |                                                            | 게시글 전체 목록                                                                                                         |
+|  게시글 작성   |  POST  | /api/board       | header { password } <br> body { userName, title, content } | 작성된 게시글                                                                                                           |
+| 개별 개시글 보기 |  GET   | /api/board/{id}  |                                                            | { <br> "userName":string, <br> "title":string, <br> "content":string <br> "lastModifiedDate":LocalDateTime <br> } |
+|  게시글 삭제   | DELETE | /api/board/{id}  |                                                            |                                                                                                                   |
+|  게시글 수정   | PATCH  | /api/board/{id}  | header { password } <br> body { userName, title, content } | 수정된 게시글                                                                                                           |
 
 
 ## ERD
