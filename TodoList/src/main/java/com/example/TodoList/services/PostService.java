@@ -1,9 +1,9 @@
-package com.example.anonymousboard2.services;
+package com.example.TodoList.services;
 
-import com.example.anonymousboard2.dtos.PostRequestDto;
-import com.example.anonymousboard2.dtos.PostResponseDto;
-import com.example.anonymousboard2.entities.Post;
-import com.example.anonymousboard2.repository.PostRepository;
+import com.example.TodoList.dtos.PostRequestDto;
+import com.example.TodoList.dtos.PostResponseDto;
+import com.example.TodoList.entities.Post;
+import com.example.TodoList.repository.PostRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
