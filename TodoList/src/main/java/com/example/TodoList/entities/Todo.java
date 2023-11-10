@@ -1,6 +1,6 @@
 package com.example.TodoList.entities;
 
-import com.example.TodoList.dtos.PostRequestDto;
+import com.example.TodoList.dtos.TodoRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,11 +12,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
-@Document( collection = "board" )
+@Document( collection = "todolist" )
 @Getter
 @Setter
 @NoArgsConstructor
-public class Post {
+public class Todo {
 
 	@Id
 	private ObjectId id;
@@ -37,15 +37,15 @@ public class Post {
 		return "name is " + userName;
 	}
 
-	public Post( PostRequestDto postRequestDto ) {
-		this.userName = postRequestDto.getUserName();
-		this.title = postRequestDto.getTitle();
-		this.content = postRequestDto.getContent();
+	public Todo( TodoRequestDto todoRequestDto ) {
+		this.userName = todoRequestDto.getUserName();
+		this.title = todoRequestDto.getTitle();
+		this.content = todoRequestDto.getContent();
 	}
 
-	public Post update( PostRequestDto postRequestDto ) {
-		this.title = postRequestDto.getTitle();
-		this.content = postRequestDto.getContent();
+	public Todo update( TodoRequestDto todoRequestDto ) {
+		this.title = todoRequestDto.getTitle();
+		this.content = todoRequestDto.getContent();
 
 		return this;
 	}

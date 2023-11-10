@@ -1,6 +1,8 @@
-# 스프링 익명 게시판 프로젝트
-* 스프링으로 익명 게시판을 만들 수 있다.
-* 데이터베이스는 MongoDB를 사용해 보자.
+# Todo List 프로젝트
+* 회원 가입, 로그인 기능 구현
+* Todo 완료 기능
+* 댓글 작성, 수정, 삭제 기능
+* ( 예외 처리 )
 ***
 
 
@@ -19,7 +21,7 @@
 
 
 ## ERD
-* post collection에 아래 내용으로 데이터 관리
+* todo collection에 아래 내용으로 데이터 관리
 
 ![img](https://github.com/japgo/spring_study/blob/master/AnonymousBoard2/img/%EC%9D%B5%EB%AA%85%20%EA%B2%8C%EC%8B%9C%ED%8C%90.png)
 ***

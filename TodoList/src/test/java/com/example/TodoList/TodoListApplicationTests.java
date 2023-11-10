@@ -1,6 +1,6 @@
 package com.example.TodoList;
 
-import com.example.TodoList.repository.PostRepository;
+import com.example.TodoList.repository.TodoRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class TodoListApplicationTests {
 
 	@Autowired
-	private PostRepository postRepository;
+	private TodoRepository todoRepository;
 
 	@Test
 	void contextLoads() {
