@@ -11,6 +11,9 @@ public enum UserRoleEnum {
 	private final String authority;
 
 	UserRoleEnum( String authority ) {
+		if( authority == null ) {
+			authority = Authority.USER;
+		}
 		this.authority = authority;
 	}
 

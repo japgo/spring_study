@@ -1,5 +1,6 @@
 package com.example.TodoList.controllers;
 
+import com.example.TodoList.dtos.LoginRequestDto;
 import com.example.TodoList.dtos.ResponseDto;
 import com.example.TodoList.dtos.SignupRequestDto;
 import com.example.TodoList.dtos.UserResponseDto;
@@ -39,5 +40,11 @@ public class UserController {
 		userService.signupUser( signupRequestDto );
 
 		return ResponseEntity.ok( new ResponseDto( "정상적으로 회원 가입 하였습니다.", 200 ) );
+	}
+
+	@PostMapping( "/user/login" )
+	public String login( LoginRequestDto loginRequestDto ) {
+
+		return "OK";
 	}
 }
