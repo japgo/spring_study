@@ -10,10 +10,7 @@ import com.example.TodoList.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,5 +43,16 @@ public class UserController {
 	public String login( LoginRequestDto loginRequestDto ) {
 
 		return "OK";
+	}
+
+	@DeleteMapping( "/user/{id}" )
+	public String path_test2( @PathVariable String id ) {
+
+		return id;
+	}
+	@DeleteMapping( "/user/{id}/test" )
+	public String path_test( @PathVariable String id ) {
+
+		return "like : " + id;
 	}
 }
