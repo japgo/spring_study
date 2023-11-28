@@ -1,12 +1,17 @@
 package com.smyr.showmeyourrecipe.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.smyr.showmeyourrecipe.dto.user.UserRequestDto;
 
 import com.smyr.showmeyourrecipe.etc.response.ApiResponse;
 
+import com.smyr.showmeyourrecipe.jwt.JwtUtil;
 import com.smyr.showmeyourrecipe.security.UserDetailsImpl;
 import com.smyr.showmeyourrecipe.service.EmailService;
+import com.smyr.showmeyourrecipe.service.KakaoService;
 import com.smyr.showmeyourrecipe.service.UserService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 	private final UserService userService;
 	private final EmailService emailService;
+	private final KakaoService kakaoService;
 
 	@PostMapping( "/auth/signup" )
 	public @ResponseBody ResponseEntity< ApiResponse > signup( @RequestBody UserRequestDto userRequestDto ) {
@@ -31,6 +37,17 @@ public class UserController {
 		this.userService.signupEmailAuth( id );
 
 		return ResponseEntity.ok( ApiResponse.ok( "회원 가입을 축하합니다. 이제부터 로그인 가능합니다." ) );
+	}
+
+	@GetMapping( "/users/kakao/callback" )
+	public String kakaoLogin( @RequestParam String code, HttpServletResponse response ) throws JsonProcessingException {
+		String token = kakaoService.kakaoLogin( code );
+
+		Cookie cookie = new Cookie( JwtUtil.AUTHORIZATION_HEADER, token.substring( 7 ) );
+		cookie.setPath( "/" );
+		response.addCookie( cookie );
+
+		return "redirect:/";
 	}
 
 	@GetMapping( "/users/{userId}" )
