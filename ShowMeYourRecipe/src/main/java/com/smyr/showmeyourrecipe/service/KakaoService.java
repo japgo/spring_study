@@ -4,10 +4,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smyr.showmeyourrecipe.dto.user.KakaoUserInfoDto;
+import com.smyr.showmeyourrecipe.entity.user.User;
+import com.smyr.showmeyourrecipe.entity.user.UserRoleEnum;
 import com.smyr.showmeyourrecipe.jwt.JwtUtil;
 import com.smyr.showmeyourrecipe.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +22,8 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.NoSuchElementException;
+import java.util.UUID;
 
 @Slf4j
 @Service
@@ -37,7 +42,37 @@ public class KakaoService {
 		// 토큰으로 카카로 API 호출 : 엑세스 토큰으로 카카오 사용자 정보 가져오기.
 		KakaoUserInfoDto kakaoUserInfo = getKakaoUserInfo( accessToken );
 
-		return null;
+		User kakaoUser = registerKakaoUserIfNeeded( kakaoUserInfo );
+
+		String createToken = jwtUtil.createToken( kakaoUser.getId(), kakaoUser.getRole() );
+
+		return createToken;
+	}
+
+	private User registerKakaoUserIfNeeded( KakaoUserInfoDto kakaoUserInfoDto ) {
+		Long kakaoId = kakaoUserInfoDto.getId();
+		User kakaoUser = userRepository.findByKakaoId( kakaoId ).orElse( null );
+
+		if( kakaoUser == null ) {
+			String kakaoEmail = kakaoUserInfoDto.getEmail();
+			User sameEmailUser = userRepository.findByEmail( kakaoEmail ).orElse( null );
+			if( sameEmailUser != null ) {
+				kakaoUser = sameEmailUser;
+				kakaoUser = kakaoUser.kakaoIdUpdate( kakaoId );
+			}
+			else {
+				String password = UUID.randomUUID().toString();
+				String encodePassword = passwordEncoder.encode( password );
+
+				String email = kakaoUserInfoDto.getEmail();
+
+				kakaoUser = new User( kakaoUserInfoDto.getNickname(), encodePassword, email, UserRoleEnum.USER, kakaoId );
+			}
+
+			userRepository.save( kakaoUser );
+		}
+
+		return kakaoUser;
 	}
 
 	private String getToken( String code ) throws JsonProcessingException {

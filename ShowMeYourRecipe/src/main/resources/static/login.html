@@ -55,24 +55,25 @@
 
         $.ajax({
             type: "POST",
-            url: `/api/user/login`,
+            url: `/api/auth/login`,
             contentType: "application/json",
             data: JSON.stringify({username: username, password: password}),
         })
             .done(function (res, status, xhr) {
-                const token = xhr.getResponseHeader('Authorization');
+                //const token = xhr.getResponseHeader('Authorization');
 
-                Cookies.set('Authorization', token, {path: '/'})
+                //Cookies.set('Authorization', token, {path: '/'})
 
-                $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
-                    jqXHR.setRequestHeader('Authorization', token);
-                });
+                //$.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+                //    jqXHR.setRequestHeader('Authorization', token);
+                //});
 
                 window.location.href = host;
             })
             .fail(function (jqXHR, textStatus) {
                 alert("Login Fail");
-                window.location.href = host + '/api/user/login-page?error'
+                //window.location.href = host + '/api/user/login-page?error'
+                window.location.href = host;
             });
     }
 </script>
