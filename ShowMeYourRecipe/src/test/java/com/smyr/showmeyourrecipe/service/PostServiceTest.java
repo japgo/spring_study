@@ -9,23 +9,22 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.BDDMockito.given;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith( MockitoExtension.class )
 @ActiveProfiles( "test" )
 class PostServiceTest {
 
-	@InjectMocks
-	private PostService postService;
-
 	@Mock
 	private PostRepository postRepository;
+
+	@InjectMocks
+	private PostService postService;
 
 	@Test
 	void createPost() {
@@ -37,12 +36,20 @@ class PostServiceTest {
 		user.setPassword( "1234" );
 		user.setIntroduce( "HI" );
 
+		Post post = Post.builder()
+				.user( user )
+				.title( "title" )
+				.content( "content" )
+				.build();
+
 		PostRequest postRequest = new PostRequest( "title", "content" );
-		when( postService.createPost( user, postRequest ) )
-				.thenReturn( new Post( user, "title", "content" ) );
+		when( postRepository.save( any(Post.class ) ) ).thenReturn( post );
 
+		// when
+		Post createdPost = postService.createPost( user, postRequest );
 
-
+		// then
+		assertEquals( createdPost.getTitle(), "title" );
 	}
 
 	@Test
