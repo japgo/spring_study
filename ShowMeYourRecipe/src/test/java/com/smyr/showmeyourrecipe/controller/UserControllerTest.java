@@ -6,6 +6,7 @@ import com.smyr.showmeyourrecipe.security.UserDetailsImpl;
 import com.smyr.showmeyourrecipe.service.EmailService;
 import com.smyr.showmeyourrecipe.service.KakaoService;
 import com.smyr.showmeyourrecipe.service.UserService;
+import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -15,8 +16,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -29,10 +32,8 @@ class UserControllerTest {
 
 	@MockBean
 	private UserService userService;
-
 	@MockBean
 	private EmailService emailService;
-
 	@MockBean
 	private KakaoService kakaoService;
 
@@ -52,7 +53,7 @@ class UserControllerTest {
 				userDetails, userDetails.getPassword(), userDetails.getAuthorities()
 		) );
 
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.get( "/api/users/1" ).contentType( MediaType.APPLICATION_JSON );
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get( "/api/users/1" );//.contentType( MediaType.APPLICATION_JSON );
 
 		// when & then
 		mockMvc.perform( requestBuilder )
