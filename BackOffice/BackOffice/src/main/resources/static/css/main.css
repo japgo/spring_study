@@ -1,0 +1,26 @@
+/* VISUAL */
+.visual {
+  margin-top: 120px;
+  background-image: url(../images/coding-guide.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.visual .inner {
+  height: 646px;
+}
+.visual .image {
+  position: absolute;
+  bottom: 0;
+  height: 200px;
+  right: -47px;
+}
+
+.modal-wrap {
+  width: 606px;
+  height: 503px;
+  background-color: orange;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+}

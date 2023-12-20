@@ -1,0 +1,59 @@
+.title-section {
+  background-color: #333;
+  height: 200px;
+  margin-top: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title-section .title {
+  color: #fff;
+  font-size: 32px;
+  text-align: center;
+}
+.content-section .inner {
+  margin-top: 120px;
+  height: 1200px;
+  padding: 10px;
+  box-sizing: border-box;
+  /* background-color: orange; */
+}
+.content-section .inner .content-each {
+  height: 60px;
+  box-sizing: border-box;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+  align-items: center;
+  margin:10px;
+  border-radius: 6px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, .15);
+}
+.content-section .inner .content-each .text {
+  position: relative;
+}
+.content-section .inner .content-each .text::after {
+  content: "";
+  width: 1px;
+  height: 25px;
+  background-color: #555;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 8px;
+}
+.content-section .inner .content-each .board-number{
+  font-size: 25px;
+  width: 100px;
+  margin: 20px;
+}
+.content-section .inner .content-each .board-title {
+  font-size: 25px;
+  flex-grow: 2;
+}
+.content-section .inner .content-each .nickname {
+  margin-right: 20px;
+}
+.content-section .inner .content-each .created-date{
+  margin-right: 20px;
+}

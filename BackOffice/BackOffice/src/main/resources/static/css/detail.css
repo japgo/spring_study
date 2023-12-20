@@ -1,0 +1,153 @@
+.title-section {
+  background-color: #333;
+  height: 200px;
+  margin-top: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.border-section {
+  /* border-top: 1px dashed #333;
+  border-bottom: 1px dashed #333; */
+  height: 100px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow : 4px 4px 10px rgba(0, 0, 0, .15);
+}
+.border-section .border-section-title {
+  font-size: 30px;
+  font-weight: 700;
+}
+.title-section .title {
+  color: #fff;
+  font-size: 32px;
+  text-align: center;
+}
+
+.content-section .inner {
+  margin-top: 120px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.content-section .inner .write-box {
+  padding: 30px;
+  position: relative;
+}
+
+.content-section .inner .write-box .board-title,
+.content-section .inner .write-box .board-content {
+  box-sizing: border-box;
+  font-size: 23px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+}
+.content-section .inner .write-box .board-title {
+  box-shadow : 4px 4px 10px rgba(0, 0, 0, .15);
+  height: 60px;
+  margin-bottom: 20px;
+}
+.content-section .inner .write-box .board-content {
+  box-shadow : 4px 4px 10px rgba(0, 0, 0, .15);
+  height: 600px;
+}
+.content-section .inner .write-box .btn{
+  margin-top: 10px;
+  position: absolute;
+  bottom: -36px;
+  right: 34px;
+}
+
+.comment-section .inner {
+  margin-top: 120px;
+  padding: 10px;
+  box-sizing: border-box;
+  /* box-shadow : 4px 4px 10px rgba(0, 0, 0, .15) */
+}
+
+.comment-section .inner .comment-box {
+  padding: 30px;
+  position: relative;
+  border: 1px solid #e5e5e5;;
+  margin: 10px;
+}
+.comment-section .inner .comment-box .comment-title{
+  font-weight: 700;
+  font-size: 20px;
+}
+.comment-section .inner .comment-box .comment-content{
+  margin: 10px 0;
+}
+
+.comment-section .inner .comment-box .input-title,
+.comment-section .inner .comment-box .input-content {
+  box-sizing: border-box;
+  font-size: 23px;
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+}
+.comment-section .inner .comment-box .input-title {
+  height: 60px;
+  margin-bottom: 20px;
+}
+.comment-section .inner .comment-box .input-content {
+  width: 100%;
+  height: 200px;
+  resize: none;
+}
+.comment-section .inner .comment-box .btn{
+  margin-top: 10px;
+  position: absolute;
+  bottom: -80px;
+  right: 34px;
+}
+
+svg {
+  width: 50px;
+  height: 50px;
+}
+.comment-box svg {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  transition: .1s;
+  top: 33px;
+  left: 370px;
+  transition: .1s;
+  fill: #ddd;
+  cursor: pointer;
+}
+.comment-box svg.active {
+  fill: royalblue;
+}
+
+.badges {
+  position: fixed;
+  top: 400px;
+  right: 150px;
+}
+.badges .badge {
+  height: 80px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, .15);
+  padding: 10px;
+}
+.badges .badge span{
+  display: block;
+}
+
+#heart {
+  transition: .1s;
+  cursor: pointer;
+  fill: #ddd;
+}
+#heart.active {
+  fill:red;
+}
