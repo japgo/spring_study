@@ -1,0 +1,21 @@
+cloud:
+  aws:
+    s3:
+      bucket: begonspringbucket
+    credentials:
+      accessKey: AKIAX5WMHC2GPM667FMI
+      secretKey: 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
+    region:
+      static: ap-northeast-2
+      auto: false
+    stack:
+      auto: false
+
+spring:
+  config:
+    import:
+      - optional:classpath:/dev.yml
+      - optional:classpath:/test.yml
+
+
+
