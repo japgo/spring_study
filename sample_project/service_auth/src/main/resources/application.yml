@@ -2,6 +2,17 @@ spring:
   application:
     name: service-auth
 
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/test
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+
 #eureka:
 #  client:
 #    service-url:
@@ -9,4 +20,6 @@ spring:
 
 server:
   port: 8081
+
+
 

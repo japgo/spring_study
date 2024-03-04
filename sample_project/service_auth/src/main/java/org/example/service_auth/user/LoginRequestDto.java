@@ -1,6 +1,6 @@
 package org.example.service_auth.user;
 
 public class LoginRequestDto {
-	String id;
+	String userName;
 	String password;
 }

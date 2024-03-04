@@ -16,8 +16,9 @@ public class UserService {
 		}
 
 		User user = User.builder()
-						.userId( signupRequestDto.userId )
-						.password( signupRequestDto.password ).build();
+				.userName( signupRequestDto.userName )
+				.email( signupRequestDto.email )
+				.password( signupRequestDto.password ).build();
 
 		userRepository.save( user );
 	}

@@ -4,6 +4,8 @@ import lombok.Builder;
 
 @Builder
 public class User {
-	public String userId;
+	public String userName;
 	public String password;
+	public String email;
+	public String nickName;
 }
