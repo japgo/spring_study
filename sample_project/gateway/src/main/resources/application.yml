@@ -5,10 +5,10 @@ spring:
     gateway:
       mvc:
         routes:
-          - id: service-auth
-            uri: lb://service-auth
+          - id: service-user
+            uri: lb://service-user
             predicates:
-              - Path=/api/auth/**
+              - Path=/api/users/**
 
 #eureka:
 #  client:

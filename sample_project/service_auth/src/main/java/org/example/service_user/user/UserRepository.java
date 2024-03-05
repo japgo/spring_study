@@ -1,4 +1,4 @@
-package org.example.service_auth.user;
+package org.example.service_user.user;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;

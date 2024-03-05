@@ -1,4 +1,4 @@
-package org.example.service_auth;
+package org.example.service_user;
 
 import com.netflix.discovery.shared.transport.jersey3.Jersey3TransportClientFactories;
 import org.springframework.context.annotation.Bean;

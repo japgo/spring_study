@@ -1,11 +1,11 @@
-package org.example.service_auth.user;
+package org.example.service_user.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Value;
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/users")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -23,5 +23,10 @@ public class UserController {
 	public ResponseEntity<?> signup( @RequestBody SignupRequestDto signupRequestDto ) throws Exception {
 		userService.signup( signupRequestDto );
 		return ResponseEntity.ok("signup ok" );
+	}
+
+	@PostMapping("/login")
+	public ResponseEntity<?> login( @RequestBody LoginRequestDto loginRequestDto ) {
+		return ResponseEntity.ok( "login ok" );
 	}
 }

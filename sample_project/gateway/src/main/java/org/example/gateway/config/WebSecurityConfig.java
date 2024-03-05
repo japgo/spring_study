@@ -17,12 +17,13 @@ public class WebSecurityConfig {
     httpSecurity.csrf(AbstractHttpConfigurer::disable);
 
     httpSecurity.sessionManagement( (sessionManager) -> sessionManager.sessionCreationPolicy(
-        SessionCreationPolicy.STATELESS));
+            SessionCreationPolicy.STATELESS));
 
     httpSecurity.authorizeHttpRequests( ( authorizeHttpRequest ) ->
-        authorizeHttpRequest
-            .requestMatchers( "/**" ).permitAll()
-            .anyRequest().authenticated()
+            authorizeHttpRequest
+                    .requestMatchers( "/api/users/signup" ).permitAll()
+                    .requestMatchers( "/api/users/login" ).permitAll()
+                    .anyRequest().authenticated()
     );
 
     return httpSecurity.build();
