@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.server.ResponseStatusException;
+
 @RestController
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
@@ -20,7 +22,7 @@ public class UserController {
 	}
 
 	@PostMapping("/signup")
-	public ResponseEntity<?> signup( @RequestBody SignupRequestDto signupRequestDto ) throws Exception {
+	public ResponseEntity<?> signup( @RequestBody SignupRequestDto signupRequestDto ) throws ResponseStatusException {
 		userService.signup( signupRequestDto );
 		return ResponseEntity.ok("signup ok" );
 	}
