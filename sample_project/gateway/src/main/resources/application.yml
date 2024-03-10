@@ -9,6 +9,8 @@ spring:
             uri: lb://service-user
             predicates:
               - Path=/api/users/**
+            filters:
+              - CustomFilter
 
 #eureka:
 #  client:
