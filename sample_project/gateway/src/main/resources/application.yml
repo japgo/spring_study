@@ -3,14 +3,17 @@ spring:
     name: gateway
   cloud:
     gateway:
-      mvc:
-        routes:
-          - id: service-user
-            uri: lb://service-user
-            predicates:
-              - Path=/api/users/**
-            filters:
-              - CustomFilter
+      default-filters:
+        - name: GlobalFilter
+          args:
+            baseMessage: Global Filter!!
+            preLogger: true
+            postLogger: true
+      routes:
+        - id: service-user
+          uri: lb://service-user
+          predicates:
+            - Path=/api/users/**
 
 #eureka:
 #  client:
